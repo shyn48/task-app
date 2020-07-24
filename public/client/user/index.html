@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/user/style.css">
+    <title>Task Manager application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img id="avatar">
+        </div>
+        <ul>
+            <li id="profile">Profile</li>
+            <li id="logout">Logout</li>
+        </ul>
+    </nav>
+    <button id="toggle" class="toggle"><i class="fa fa-bars fa-2x"></i></button>
+    <div class="main">
+        <div class="container">
+            <header>
+                <h2>Tasks</h2>
+                <i class="fas fa-plus-square add-task"></i>
+            </header>
+        </div>
+        <div class="toolbar" id="toolbar">
+            <label>Task Description : </label>
+            <input type="text" class="task-description" id="task-description">
+            <label class="errMsgLabel" id="errMsgLabel">Please provide a description</label>
+            <button class="cancelBtn" id="cancelBtn">Cancel</button>
+            <button class="saveBtn" id="saveBtn">Save</button>
+        </div>
+    </div>
+
+    <script src="/user/app.js"></script>
+</body>
+</html>

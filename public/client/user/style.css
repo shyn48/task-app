@@ -1,0 +1,275 @@
+:root{
+    --modal-duration: 0.5s;
+    --primary-color: #262623;
+    --secondary-color: rgb(33, 243, 138);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+body.show-nav {
+    transform: translateX(200px);
+    transition: all 0.5s ease;
+}
+
+nav{
+    transition: all 0.5s ease;
+    background-color: var(--primary-color);
+    border-right: 2px solid rgba(200, 200, 200, 0.1);
+    color: var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    z-index: 100;
+    transform: translateX(-100%);
+    color: white;
+    text-align: center;
+    font-size: 17px;
+}
+
+nav .logo {
+    padding: 30px 0;
+    text-align: center;
+}
+
+nav .logo img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+nav ul {
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+nav ul li {
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 20px;
+}
+nav ul li:first-of-type {
+    border-top: 2px solid var(--secondary-color);
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover{
+    color: var(--secondary-color);
+    transition:all 0.5s;
+}
+
+button:focus{
+    outline: none;
+}
+
+.toggle {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 20px;
+    left:20px;
+    border: 0;
+}
+
+header{
+    color: white;
+    position: relative;
+    padding: 10px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(82, 82, 82, 0.5)
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(33, 243, 138)
+}
+
+.container{
+    margin-left: 20px;
+    overflow: auto;
+    height: 90%;
+    width: 90%;
+    background-color: rgb(42, 42, 42);
+    box-shadow: -8px 7px 16px -2px rgb(0, 0, 0, 0.7);
+    box-shadow:  8px -7px -16px 2px rgb(0, 0, 0, 0.7);
+    border-radius: 10px;
+    color: white;
+}
+
+.toolbar{
+    margin-left: 20px;
+    transition: all 0.3s;
+    padding: 15px;
+    width: 90%;
+    background-color: rgb(42, 42, 42);
+    box-shadow: -8px 7px 16px -2px rgb(0, 0, 0, 0.7);
+    box-shadow: 8px -7px -16px 2px rgb(0, 0, 0, 0.7);
+    border-radius: 10px;
+    color: white;
+    transform: translateY(150%);
+}
+
+.errMsgLabel {
+    color: white;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    padding: 5px;
+    display: none;
+}
+
+.errMsgLabel.show{
+    display: inline;
+}
+
+.toolbar.show{
+    transition: all 0.3s;
+    transform: translateY(-100%);
+}
+
+.toolbar input {
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(33, 243, 138);
+    padding: 2px 5px;
+}
+
+button{
+    cursor: pointer;
+    border: 0;
+    background-color: rgb(33, 243, 138);
+    color: rgb(42, 42, 42);
+    font-weight: bold;
+    padding: 5px 13px;
+    border-radius: 10px;
+}
+
+.saveBtn{
+    float: right;
+    margin-right: 15px;
+
+}
+
+.cancelBtn{
+    float: right;
+}
+
+.container::-webkit-scrollbar{
+    width: 10px;
+}
+
+.container::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px gery;
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb{
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.task{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75px;
+  position: relative;
+  padding-left: 75px;
+  padding-top: 25px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(82, 82, 82, 0.5);
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.taskTxt{
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.task .chkInput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid rgb(33, 243, 138);
+    background-color: #eee;
+}
+
+.checkmark:hover {
+    background-color: #ccc;
+}
+  
+.task .checkmark.checked {
+    background-color: rgb(33, 243, 138);
+}
+
+.checkmark i.show {
+    display: block;
+    position: absolute;
+    font-size: 110%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.add-task {
+    position: absolute;
+    top:50%;
+    opacity: 0.6;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 40px;
+}
+.checkmark i{
+    display: none;
+}
+
+.fa-times {
+    color: rgb(165, 165, 165);
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    cursor: pointer;
+}
+
+#profile{
+    cursor: pointer;
+}
+
+#logout{
+    cursor: pointer;
+}

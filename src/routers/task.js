@@ -63,6 +63,7 @@ router.post('/tasks',auth, async (req, res) => {
         await task.save()
         res.send(task)
     } catch(e) {
+        console.log(e)
         res.status(500).send(e)
     }
 

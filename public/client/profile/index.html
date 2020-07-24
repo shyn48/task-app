@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile/style.css">
+    <title>Task Manager application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img id="avatar">
+        </div>
+        <ul>
+            <li id="Task-Manager">Task Manager</li>
+            <li id="profile">Profile</li>
+            <li id="logout">Logout</li>
+        </ul>
+    </nav>
+    <button id="toggle" class="toggle"><i class="fa fa-bars fa-2x"></i></button>
+    <div class="main">
+            <div class="left">
+                <img id="profilePic">
+                <label for="setAvatar" class="fileInput">Set Avatar</label>
+                <input type='file' class="btn" id="setAvatar">
+            </div>
+            <div class="user">
+                <ul>
+                    <li id = "name" class="userData">Name:</li>
+                    <li id = "email" class="userData">Email:</li>
+                    <li id = "age" class="userData">Age:</li>
+                    <li id = "date" class="userData">Creation Date:</li>
+                </ul>
+            </div>
+    </div>
+    <script src="/profile/app.js"></script>
+</body>
+</html>

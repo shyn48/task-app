@@ -14,23 +14,26 @@ const upload = multer({
         cb(undefined, true)
     }
 })
+
+const cookie = require('js-cookie')
  
 const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 
-router.post('/users', async (req, res) => {
+router.post('/api/users',  async (req, res) => {
     const user = new User(req.body)
     try {
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
+        console.log({user, token})
+        res.json({ user, token })
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
@@ -40,7 +43,7 @@ router.post('/users/login', async (req, res) => {
     }
 })
 
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
@@ -53,7 +56,7 @@ router.post('/users/logout', auth, async (req, res) => {
     }
 })
 
-router.post('/users/logoutall', auth, async(req, res) => {
+router.post('/api/users/logoutall', auth, async(req, res) => {
     try{
         req.user.tokens = []
         await req.user.save()
@@ -63,7 +66,7 @@ router.post('/users/logoutall', auth, async(req, res) => {
     }
 })
 
-router.get('/users/me',auth, async (req, res) => {
+router.get('/api/users/me',auth, async (req, res) => {
     res.send(req.user)
 })
 
@@ -84,7 +87,7 @@ router.get('/users/me',auth, async (req, res) => {
 //       }
 // })
 
-router.patch('/users/me',auth, async (req,res) => {
+router.patch('/api/users/me',auth, async (req,res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name','email','password','age']
     const isValidOperation = updates.every( (update) => allowedUpdates.includes(update) )
@@ -109,7 +112,7 @@ router.patch('/users/me',auth, async (req,res) => {
         }
 })
 
-router.delete('/users/me',auth, async (req,res) => {
+router.delete('/api/users/me',auth, async (req,res) => {
         try {
             await req.user.remove()
             res.send(req.user)
@@ -118,22 +121,23 @@ router.delete('/users/me',auth, async (req,res) => {
         }
 })
 
-router.post('/users/me/avatar',auth, upload.single('upload'), async (req, res) => {
-    const buffer = await sharp(req.file.buffer).resize({width: 250, height: 250}).png().toBuffer()
+router.post('/api/users/me/avatar',auth, upload.single('upload'), async (req, res) => {
+    const buffer = await sharp(req.file.buffer).png().toBuffer()
     req.user.avatar = buffer;
     await req.user.save()
-    res.send()
+    const user = req.user
+    res.send(user)
 }, (error, req, res, next) => {
     res.status(400).send({error: error.message})
 })
 
-router.delete('/users/me/avatar', auth, async(req, res) => {
+router.delete('/api/users/me/avatar', auth, async(req, res) => {
     req.user.avatar = undefined
     await req.user.save()
     res.send()
 })
 
-router.get('/users/:id/avatar', async (req, res) => {
+router.get('/api/users/:id/avatar', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
 

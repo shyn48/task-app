@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Task Manager application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="left-side">
+            <img src="photo-1541701494587-cb58502866ab.jpg" alt="">
+        </div>
+        <div class="right-side">
+            <hr><hr>
+            <h1>Sign In</h1>
+            <form>
+                <div>
+                    <i class="fas fa-user"></i>
+                    <input id="email" type="email" placeholder="Enter your email" name="email" required>
+                </div>
+                <div>
+                    <i class="fas fa-key"></i>
+                    <input id="pass" type="password" placeholder="Enter your password" name="password" required>
+                </div>
+                <div id="msg-container" class="msg-container"><p class="msg" id="msg">Your username or password is incorrect</p></div>
+                <button id="login" type="submit">Login</button>
+                <button id="signUp" type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

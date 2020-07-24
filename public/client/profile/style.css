@@ -1,0 +1,169 @@
+:root{
+    --modal-duration: 0.5s;
+    --primary-color: #262623;
+    --secondary-color: #ce2727;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&family=Oswald&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #33313b;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+body.show-nav {
+    transform: translateX(200px);
+    transition: all 0.5s ease;
+}
+
+nav{
+    transition: all 0.5s ease;
+    background-color: var(--primary-color);
+    border-right: 2px solid rgba(200, 200, 200, 0.1);
+    color: var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    z-index: 100;
+    transform: translateX(-100%);
+    color: white;
+    text-align: center;
+    font-size: 17px;
+}
+
+nav .logo {
+    padding: 30px 0;
+    text-align: center;
+}
+
+nav .logo img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+nav ul {
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+}
+nav ul li {
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 20px;
+}
+nav ul li:first-of-type {
+    border-top: 2px solid var(--secondary-color);
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover{
+    color: var(--secondary-color);
+    transition:all 0.5s;
+}
+
+button:focus{
+    outline: none;
+}
+
+.toggle {
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 20px;
+    left:20px;
+    border: 0;
+}
+
+.main{
+    height: 550px;
+    width: 90%;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+}
+
+.left img{
+    width: 95%;
+    height: 450px;
+    border-radius: 10px;
+    object-fit: contain;
+    margin-top: 25px;
+    margin-left: 29px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: none;
+}
+
+.fileInput{
+    border: 2px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 3px 7px;
+    font-weight: bold;
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+    width: 60%;
+    border-right: 1px solid rgb(179, 179, 179);
+}
+
+.user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    float: right;
+    font-size: 20px;
+}
+
+.user ul {
+    list-style-type: none;
+    left: 0;
+    margin-left: 10px;
+}
+
+.user ul li{
+    margin-top: 60px;
+    color: #292929;
+    margin-bottom: 60px;
+}
+
+#profile{
+    cursor: pointer;
+    background-color: var(--secondary-color);
+}
+
+#logout{
+    cursor: pointer;
+}
+#Task-Manager{
+    cursor: pointer;
+}
